@@ -28,7 +28,7 @@ export const categoryService = {
 export const fetchCourseDetails = async (id) => {
   const response = await api.get(`/courses/${id}`);
   console.log(response);
-  return response.data;
+  return response.data.data;
 };
 
 export const createCourse = async (courseData) => {
@@ -75,4 +75,41 @@ export const updateCategory = async (id, categoryData) => {
 export const deleteCategory = async (id) => {
   const response = await api.delete(`/categories/${id}`);
   return response.data.data;
+};
+
+//  routes pour les statistiques
+export const fetchCourseStats = async () => {
+  const response = await api.get(`/V1/stats/courses`);
+  return response.data;
+};
+
+export const fetchCategoryStats = async () => {
+  const response = await api.get(`/V1/stats/categories`);
+  return response.data;
+};
+
+export const fetchTagStats = async () => {
+  const response = await api.get(`/V1/stats/tags`);
+  return response.data;
+};
+
+export const statsService = {
+  getCourseStats: fetchCourseStats,
+  getCategoryStats: fetchCategoryStats,
+  getTagStats: fetchTagStats,
+  
+  
+  getAllStats: async () => {
+    const [courseStats, categoryStats, tagStats] = await Promise.all([
+      fetchCourseStats(),
+      fetchCategoryStats(),
+      fetchTagStats()
+    ]);
+    
+    return {
+      courseStats,
+      categoryStats,
+      tagStats
+    };
+  }
 };
