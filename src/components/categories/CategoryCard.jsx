@@ -1,18 +1,24 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const CategoryCard = ({ category }) => {
+  const navigate = useNavigate();
+
+  const handleViewDetails = () => {
+    navigate(`/categories/${category.id}`); // Redirection vers la page de détails
+  };
+
   return (
-    <div className="border rounded-lg p-4 shadow hover:shadow-lg transition duration-200">
-      <h2 className="text-xl font-semibold">{category.name}</h2>
-      <p className="text-gray-600 text-sm mt-1">{category.description}</p>
-      <span className="text-xs text-gray-400 italic">Slug: {category.slug}</span>
-      <Link
-        to={`/categories/${category.id}`}
-        className="text-blue-500 mt-2 inline-block"
-      >
-        Voir les détails
-      </Link>
+    <div className="bg-white p-4 rounded-xl shadow-md flex justify-between items-center">
+      <span className="font-semibold">{category.name}</span>
+      <div className="space-x-2">
+        <button
+          onClick={handleViewDetails}
+          className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded"
+        >
+          Voir les détails
+        </button>
+      </div>
     </div>
   );
 };

@@ -41,12 +41,8 @@ const CourseCard = ({ course }) => {
           <Link to={`/courses/${course.id}`} className="text-sm font-medium text-indigo-600 hover:text-indigo-800">
             Voir le cours →
           </Link>
-          <Link to={`/courses/${course.id}`} className="text-sm font-medium text-indigo-600 hover:text-indigo-800">
-           supprime        
-        </Link>
-          <Link to={`/courses/${course.id}`} className="text-sm font-medium text-indigo-600 hover:text-indigo-800">
-            edit →
-          </Link>
+      c
+          
         </div>
       </div>
 

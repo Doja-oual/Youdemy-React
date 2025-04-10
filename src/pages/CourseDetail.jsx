@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchCourseDetails, deleteCourse } from '../services/api';
@@ -218,6 +219,12 @@ const CourseDetail = () => {
                       </>
                     )}
                   </button>
+                  <Link 
+                  to={`/courses/${course.id}/edit`} 
+                  className="px-4 py-2 bg-blue-100 text-blue-700 rounded-md hover:bg-blue-200 transition-colors"
+                    >
+                    Modifier
+               </Link>
                   
                   <button 
                     className="px-4 py-2 bg-indigo-100 text-indigo-700 rounded-md hover:bg-indigo-200 transition-colors"

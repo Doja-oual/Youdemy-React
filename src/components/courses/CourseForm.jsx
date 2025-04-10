@@ -352,6 +352,24 @@ const CourseForm = () => {
           />
           {formErrors.duration && <p className="mt-1 text-sm text-red-600">{formErrors.duration}</p>}
         </div>
+        {/* Niveau */}
+<div>
+  <label htmlFor="level" className="block text-sm font-medium text-gray-700 mb-1">
+    Niveau
+  </label>
+  <select
+    id="level"
+    name="level"
+    value={formData.level}
+    onChange={handleChange}
+    className="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 border-gray-300"
+  >
+    <option value="beginner">Débutant</option>
+    <option value="intermediate">Intermédiaire</option>
+    <option value="advanced">Avancé</option>
+  </select>
+</div>
+
 
         {/* Image */}
         <div>
