@@ -9,6 +9,7 @@ const Courses = () => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [filterredCourses,setfilterredCourses]=useState([]);
 
   useEffect(() => {
     const getCourses = async () => {
@@ -25,11 +26,27 @@ const Courses = () => {
     getCourses();
   }, []);
 
+  useEffect(()=>{
+    setfilterredCourses(courses);
+  },[courses]);
+
+  const handleChange = (e) => {
+    const value = e.target.value.toLowerCase();
+    const filtered = courses.filter(
+      (course) => course.title && course.title.toLowerCase().includes(value)
+    );
+    setfilterredCourses(filtered);
+  };
+  
   return (
     <div>
       <Header />
       <main className="container mx-auto p-4">
-      <Link
+      <input
+  type="text"
+  className="w-full max-w-md px-4 py-2 border border-gray-300 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+  onInput={handleChange}
+/>      <Link
           to="/courses/create"
           className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
@@ -50,9 +67,9 @@ const Courses = () => {
           <p>Chargement...</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {courses.map(course => (
-              <CourseCard key={course.id} course={course} />
-            ))}
+           {filterredCourses.map(course => (
+  <CourseCard key={course.id} course={course} />
+))}
           </div>
         )}
       </main>

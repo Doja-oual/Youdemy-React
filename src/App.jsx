@@ -20,8 +20,6 @@ function App() {
         {/* ROUTES POUR LES CATEGORIES */}
         <Route path="/categories" element={<Categories />} />
         <Route path="/categories/create" element={<CategoryForm />} />
-        
-      
         <Route path="/categories/:id" element={<CategoryDetail />} />
         <Route path="/categories/:id/edit" element={<CategoryForm />} />
         <Route path="/courses/:id" element={<CourseDetail />} />

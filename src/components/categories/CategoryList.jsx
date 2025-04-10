@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchCategories } from "../../services/api";
 import CategoryCard from "./CategoryCard";
-import { Link } from "react-router-dom"; // Importer Link pour la navigation
+import { Link } from "react-router-dom"; 
 
 const CategoryList = () => {
   const [categories, setCategories] = useState([]);
@@ -27,7 +27,6 @@ const CategoryList = () => {
 
   return (
     <div className="space-y-4">
-      {/* Lien vers le formulaire de création de catégorie */}
       <Link
         to="/categories/create"
         className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded mb-4 inline-block"

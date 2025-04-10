@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom"; // Import Link
+import { useParams, useNavigate, Link } from "react-router-dom"; 
 import { fetchCategoryDetails, updateCategory, deleteCategory } from "../../services/api"; 
 
 const CategoryDetail = () => {
-  const { id } = useParams(); // Récupère l'ID de la catégorie depuis l'URL
+  const { id } = useParams(); 
   const navigate = useNavigate();
   
   const [category, setCategory] = useState(null);
 
   useEffect(() => {
     const loadCategory = async () => {
-      const data = await fetchCategoryDetails(id); // Récupère les détails de la catégorie via l'API
+      const data = await fetchCategoryDetails(id); 
       setCategory(data);
     };
     loadCategory();
@@ -19,7 +19,7 @@ const CategoryDetail = () => {
   const handleDelete = async () => {
     if (confirm(`Supprimer la catégorie "${category.name}" ?`)) {
       await deleteCategory(id);
-      navigate("/"); // Redirige vers la liste des catégories après la suppression
+      navigate("/"); 
     }
   };
 
@@ -32,7 +32,6 @@ const CategoryDetail = () => {
       <p className="mt-2"><strong>Description:</strong> {category.description}</p>
       
       <div className="space-x-2 mt-4">
-        {/* Remplacer le bouton par un Link */}
         <Link 
           to={`/categories/${category.id}/edit`} 
           className="px-4 py-2 bg-blue-100 text-blue-700 rounded-md hover:bg-blue-200 transition-colors"

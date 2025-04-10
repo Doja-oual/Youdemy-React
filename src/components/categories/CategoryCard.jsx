@@ -5,7 +5,7 @@ const CategoryCard = ({ category }) => {
   const navigate = useNavigate();
 
   const handleViewDetails = () => {
-    navigate(`/categories/${category.id}`); // Redirection vers la page de détails
+    navigate(`/categories/${category.id}`);
   };
 
   return (

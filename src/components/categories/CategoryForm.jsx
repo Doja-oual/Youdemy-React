@@ -3,9 +3,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { fetchCategoryDetails, updateCategory, createCategory } from '../../services/api';
 
 const CategoryForm = () => {
-  const { id } = useParams(); // Récupère l'ID de la catégorie depuis l'URL
+  const { id } = useParams(); 
   const navigate = useNavigate();
-  const isEdit = Boolean(id); // Vérifie si c'est un mode édition
+  const isEdit = Boolean(id); 
 
   const [formData, setFormData] = useState({
     name: '',
@@ -15,7 +15,6 @@ const CategoryForm = () => {
 
   useEffect(() => {
     if (isEdit) {
-      // Si c'est en mode édition, récupère les détails de la catégorie à modifier
       const loadCategory = async () => {
         const data = await fetchCategoryDetails(id);
         setFormData(data);
@@ -37,7 +36,7 @@ const CategoryForm = () => {
       } else {
         await createCategory(formData);
       }
-      navigate('/categories'); // Redirige vers la liste des catégories après l'ajout/édition
+      navigate('/categories'); 
     } catch (error) {
       console.error('Erreur formulaire:', error);
     }
