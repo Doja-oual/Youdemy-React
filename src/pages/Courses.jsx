@@ -16,6 +16,7 @@ const Courses = () => {
       try {
         const data = await fetchCourses();
         setCourses(data);
+        console.log(data)
         setLoading(false);
       } catch (error) {
         setError('Impossible de charger les cours.');

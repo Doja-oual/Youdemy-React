@@ -67,6 +67,7 @@ export const createCategory = async (categoryData) => {
   return response.data.data;
 };
 
+
 export const updateCategory = async (id, categoryData) => {
   const response = await api.put(`/categories/${id}`, categoryData);
   return response.data.data;

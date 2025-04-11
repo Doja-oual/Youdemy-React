@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom"
 
 const CourseCard = ({ course }) => {
+  const tags = course.tags
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
       <div className="relative pb-[56.25%]">
         <img
-          src={course.image_url || "https://via.placeholder.com/640x360?text=Cours"}
+          src={course.image_url }
           alt={course.title}
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -46,9 +47,9 @@ const CourseCard = ({ course }) => {
         </div>
       </div>
 
-      {course.tags && course.tags.length > 0 && (
+      {tags && tags.length > 0 && (
         <div className="px-4 pb-4 flex flex-wrap gap-1">
-          {course.tags.map((tag) => (
+          {tags.map((tag) => (
             <span key={tag.id} className="inline-block bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded">
               {tag.name}
             </span>
